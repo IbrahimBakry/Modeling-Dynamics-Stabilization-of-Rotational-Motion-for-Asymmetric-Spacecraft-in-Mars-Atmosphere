@@ -1,0 +1,41 @@
+%% Aerodynamic File
+clc;
+clear;
+close all;
+
+alpha = [0 5 10 15 20];
+Cy = [0 0.15 0.28 0.42 0.53] ;
+Cx = [0.24 0.22 0.185 0.13 0.04];
+Cm = [0 -0.06];
+
+Cypoly = polyfit(alpha,Cy,2);
+Cxfitted = polyval(Cypoly,[0:0.1:90]);
+figure(1); plot(alpha,Cy,'o'); hold on
+plot([0:0.1:90],Cxfitted); hold off
+
+Cxpoly = polyfit(alpha,Cx,2);
+Cxfitted = polyval(Cxpoly,[0:0.1:90]);
+figure(2); plot(alpha,Cx,'o'); hold on
+plot([0:0.1:90],Cxfitted); hold off
+
+Cmpoly = polyfit([0 20],Cm,2);
+Cmfitted = polyval(Cmpoly,[0:0.1:90]);
+figure(3); plot([0 20],Cx,'o'); hold on
+plot([0:0.1:90],Cmfitted); hold off
+
+
+
+
+
+
+% A = 0:0.1:90;
+% Cx0 = 0.24;
+% Cy0 = 0.00;
+% mz1 = 0.00;
+% mz2 = -0.05;
+% Cx = Cx0.*cos(A);
+% Cy = Cy0.*sin(A);
+% mzn= mz1.*sin(A) + mz2.*sin(2*A);
+
+% plot(alpha,Cxp,alpha,Cyp)
+% plot(alpha,Cyp)
